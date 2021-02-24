@@ -7,3 +7,5 @@ The external tuning knob uses an ptical encoder (120ppr), and 6 buttons.
 Each button can be programmed for up to 3 functions each, tap,
 double-tap and hold.
 
+Tuning knob has not been tested with the KX2
+
