@@ -72,7 +72,7 @@ String SW2Tap = "SWT28;"; // spot
 String SW2DoubleTap = ""; // 
 String SW2Hold = "SWT44;"; // atu tune
 
-String SW3Tap = "SWH35;SWT25;SWT25;SWH18;UP4;"; // dual receive - pressing PB1
+String SW3Tap = "SWH35;SWT25;SWT25;SB1;UP4;"; // dual receive on
 String SW3DoubleTap = ""; // 
 String SW3Hold = "SWH25;"; // split
 
@@ -85,7 +85,7 @@ String SW5DoubleTap = ""; //
 String SW5Hold = "SWT24;"; // A/B
 
 String SW6Tap = "SWT35;"; // ofs/B
-String SW6DoubleTap = ""; // 
+String SW6DoubleTap = "SB0;DN4;SWT25;"; // 
 String SW6Hold = "SWH29;"; // vox
 
 //**********************************
