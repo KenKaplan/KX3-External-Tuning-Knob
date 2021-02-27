@@ -61,7 +61,7 @@
 // ignore the following error from the arduino ide:
 // WARNING: library ButtonsEvents-master claims to run on avr architecture(s) and may be incompatible with your current board which runs on STM32F1 architecture(s).
 
-#include "EEPROM.h"
+// #include "EEPROM.h"
 
 // KX3 Switch Commands
 String SW1Tap = "SWT12;"; // rate
@@ -69,23 +69,23 @@ String SW1DoubleTap = "MN146;MP001;PC110;MN255;"; // pa on, set tp 100w
 String SW1Hold = "SWH12;"; // khz
 
 String SW2Tap = "SWT28;"; // spot
-String SW2DoubleTap = "SWH28;"; // cwt
+String SW2DoubleTap = ""; // 
 String SW2Hold = "SWT44;"; // atu tune
 
-String SW3Tap = "SWT25;SWT25;"; // A->B
-String SW3DoubleTap = "SWH25;"; // split
-String SW3Hold = "SWH35;SWT25;SWT25;SWH18;UP4;"; // dual receive - pressing PB1
+String SW3Tap = "SWH35;SWT25;SWT25;SWH18;UP4;"; // dual receive - pressing PB1
+String SW3DoubleTap = ""; // 
+String SW3Hold = "SWH25;"; // split
 
 String SW4Tap = "SWT08;"; // band +
-String SW4DoubleTap = "SWT19;"; // pre
+String SW4DoubleTap = ""; //
 String SW4Hold = "SWT41;"; // band -
 
-String SW5Tap = "SWT14;"; // mode
-String SW5DoubleTap = "SWH24;"; // rev
-String SW5Hold = "SWH14;"; // alt
+String SW5Tap = "SWT25;"; // A->B
+String SW5DoubleTap = ""; // 
+String SW5Hold = "SWT24;"; // A/B
 
-String SW6Tap = "SWH35;"; // clr
-String SW6DoubleTap = "SWT35;"; // ofs/B
+String SW6Tap = "SWT35;"; // ofs/B
+String SW6DoubleTap = ""; // 
 String SW6Hold = "SWH29;"; // vox
 
 //**********************************
