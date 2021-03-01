@@ -1,7 +1,8 @@
 /**************************************************************************
-  KX3ExtTuningKnob - Ken Kaplan WB2ART September 2020 version 5.0
+  KX3ExtTuningKnob - Ken Kaplan WB2ART September 2020 version 5.1
   Rotary encoder code de W8BH.
 
+   2/27/21 - addedd check for serial port (on Blue Pill) to only send commands to the KX3
    1/02/21 - finished final hardware build / modified code for most recent pcb version 3.0 (version 5.0 code)
   12/26/20 - plan to add volume control - AG 000-255
   12/12/20 - added bypassAll variable. When true will only send characters to/from the KX3.
@@ -65,7 +66,7 @@
 
 // KX3 Switch Commands
 String SW1Tap = "SWT12;"; // rate
-String SW1DoubleTap = "MN146;MP001;PC110;MN255;"; // pa on, set tp 100w
+String SW1DoubleTap = "MN146;MP001;PC100;MN255;"; // pa on, set tp 100w
 String SW1Hold = "SWH12;"; // khz
 
 String SW2Tap = "SWT28;"; // spot
@@ -219,6 +220,18 @@ void setupEncoder()
   attachInterrupt(digitalPinToInterrupt(ENCODER_B), rotaryISR, CHANGE);
 }
 
+void serialCheck()
+{
+  if (Serial.available()) // check if computer has sent command
+      {
+        compSending = true;
+        int inByte = Serial.read();
+        Serial2.write(inByte); // send command to KX3
+        //Serial.println(char(inByte));
+      }
+      else compSending = false;
+}
+
 void serial2Check()
 {
   if (Serial2.available()) // check if KX3 has sent data
@@ -254,13 +267,8 @@ void setup()
 
   Serial2.println("AI0;"); // turn off auto-info mode
   // vfoB = false;
-  //  bypassAll = false;
-  //  audioGain = false;
-
-  // set all led's off
-  // digitalWrite(led1, LOW);
-  //  digitalWrite(led2, LOW);
-  //  digitalWrite(led3, LOW);
+  // bypassAll = false;
+  // audioGain = false;
 }
 
 void loop()
@@ -403,7 +411,7 @@ void loop()
         }
       }
     }
-    
+    serialCheck(); // micro usb on Blue Pill
     serial3Check();
     
     // each of the follwing case sections has detection for switches SW1-SW6 for tap, doubleTap and hold functions.
